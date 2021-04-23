@@ -10,20 +10,17 @@ public class FilterUtil {
         what = what.replaceAll("[\\(\\)\\[\\]\\{\\}]","");
 
         //check
-        if(!search.replaceAll(what,"_").equals(search)) {
-            return true;
-        }
-        if(!search.replaceAll(upperCaseAllFirst(what),"_").equals(search)) {
-            return true;
-        }
-        if(!search.replaceAll(what.toLowerCase(),"_").equals(search)) {
-            return true;
-        }
-        if(!search.replaceAll(what.toUpperCase(),"_").equals(search)) {
-            return true;
-        }
-        return false;
+        return compareString(search, what)||compareFirstCharAllSrtingr(search, what);
     }
+
+
+    public static boolean compareString(String search, String what){
+        return !search.replaceAll(what,"_").equalsIgnoreCase(search);
+    }
+    public static boolean compareFirstCharAllSrtingr(String search, String what) {
+        return !search.replaceAll(upperCaseAllFirst(what),"_").equals(search);
+    }
+
 
 
 
